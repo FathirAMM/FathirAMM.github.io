@@ -67,6 +67,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize state on load
     updateNavbar();
 
+    // Item toggle (Experience & Education)
+    document.querySelectorAll('.experience-item.clickable, .education-item.clickable').forEach(item => {
+        item.addEventListener('click', () => {
+            // Close other expanded items in both lists
+            document.querySelectorAll('.experience-item.expanded, .education-item.expanded').forEach(expandedItem => {
+                if (expandedItem !== item) {
+                    expandedItem.classList.remove('expanded');
+                }
+            });
+
+            item.classList.toggle('expanded');
+        });
+    });
+
     // Listen for scroll events
     window.addEventListener('scroll', updateNavbar);
 
